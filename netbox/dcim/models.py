@@ -2700,17 +2700,26 @@ class VirtualChassis(ChangeLoggedModel):
         max_length=30,
         blank=True
     )
+    name = models.CharField(
+        max_length=64,
+        blank=True,
+        null=True,
+        unique=True
+    )
 
     tags = TaggableManager(through=TaggedItem)
 
-    csv_headers = ['master', 'domain']
+    csv_headers = ['master', 'domain', 'name']
 
     class Meta:
         ordering = ['master']
         verbose_name_plural = 'virtual chassis'
 
     def __str__(self):
-        return str(self.master) if hasattr(self, 'master') else 'New Virtual Chassis'
+        if hasattr(self, 'master'):
+            return 'Master: {} Name: {}'.format(str(self.master), self.name)
+        else:
+            return 'New Virtual Chassis'
 
     def get_absolute_url(self):
         return self.master.get_absolute_url()

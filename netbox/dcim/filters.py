@@ -904,14 +904,15 @@ class VirtualChassisFilter(django_filters.FilterSet):
 
     class Meta:
         model = VirtualChassis
-        fields = ['id', 'domain']
+        fields = ['id', 'domain', 'name']
 
     def search(self, queryset, name, value):
         if not value.strip():
             return queryset
         qs_filter = (
             Q(master__name__icontains=value) |
-            Q(domain__icontains=value)
+            Q(domain__icontains=value) |
+            Q(name__icontains=value)
         )
         return queryset.filter(qs_filter)
 

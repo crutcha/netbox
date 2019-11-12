@@ -633,7 +633,7 @@ class VirtualChassisSerializer(TaggitSerializer, ValidatedModelSerializer):
 
     class Meta:
         model = VirtualChassis
-        fields = ['id', 'master', 'domain', 'tags', 'member_count']
+        fields = ['id', 'master', 'name', 'domain', 'tags', 'member_count']
 
 
 #

@@ -3381,7 +3381,7 @@ class VirtualChassisForm(BootstrapMixin, forms.ModelForm):
     class Meta:
         model = VirtualChassis
         fields = [
-            'master', 'domain', 'tags',
+            'master', 'domain', 'tags', 'name',
         ]
         widgets = {
             'master': SelectWithPK(),

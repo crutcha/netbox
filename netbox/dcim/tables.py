@@ -874,7 +874,7 @@ class VirtualChassisTable(BaseTable):
 
     class Meta(BaseTable.Meta):
         model = VirtualChassis
-        fields = ('pk', 'master', 'domain', 'member_count', 'actions')
+        fields = ('pk', 'master', 'domain', 'member_count', 'name', 'actions')
 
 
 #
